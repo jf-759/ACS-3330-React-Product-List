@@ -1,8 +1,11 @@
 import React from 'react';
 
-function CategoryButton ({ name, onSelect }) {
+function CategoryButton ({ name, onSelect, isActive }) {
     return (
-        <button onClick={() => onSelect(name)}>
+        <button 
+            className={`category-button ${isActive ? 'active' : ''}`}
+            onClick={() => onSelect(name)}
+        >
             {name}
         </button>
     );

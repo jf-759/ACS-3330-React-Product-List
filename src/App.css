@@ -61,3 +61,113 @@ button:hover {
   background-color: #f9f9f9;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  align-items: start;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  list-style: none;
+  padding: 0;
+}
+
+.product-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+.category-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-rows: repeat(2, auto);
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.category-buttons button {
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  min-width: 120px;
+}
+
+.category-buttons button:hover {
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  transform: scale(1.05);
+  color: white;
+}
+
+.category-buttons button.active {
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  color: white;
+  transform: scale(1.1);
+}
+
+.category-button {
+  padding: 10px 15px;
+  margin: 5px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  background: #ddd;
+  transition: 0.3s ease;
+}
+
+.category-button:hover {
+  background: #ccc;
+}
+
+.category-button.active {
+  background: #007bff;
+  color: white;
+  font-weight: bold;
+}
+
+
+
+@media (max-width: 600px) {
+  .category-buttons {
+    grid-template-rows: auto;
+    grid-template-columns: repeat(auto-fit, minxmax(100px, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .product-list {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+  }
+}
+
+@media (max-width: 600px) {
+  .product-list {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+
+

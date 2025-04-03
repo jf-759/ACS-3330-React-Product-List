@@ -1,13 +1,22 @@
 import React from 'react';
 import CategoryButton from './CategoryButton';
 
-function CategoryButtons({ categories, onSelectCategory}) {
+function CategoryButtons({ categories, onSelectCategory, selectedCategory}) {
     return (
-        <div>
+        <div className='category-buttons'>
+            
+            <CategoryButton name="All" 
+            onSelect={onSelectCategory} 
+            isActive={selectedCategory === 'All'} 
+            />
 
-            <CategoryButton name="All Categories" onSelect={onSelectCategory} />
             {categories.map((category, index) => (
-                <CategoryButton key={index} name={category} onSelect={onSelectCategory} />
+                <CategoryButton 
+                key={index} 
+                name={category} 
+                onSelect={onSelectCategory} 
+                isActive={selectedCategory === category}
+                />
             ))}
         </div>
     );

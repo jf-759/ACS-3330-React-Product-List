@@ -11,16 +11,21 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   const filteredProducts = 
-    selectedCategory === 'All Categories'
+    selectedCategory === 'All'
     ? data
     : data.filter((product) => product.category === selectedCategory);
+
+  const totalProducts = filteredProducts.length;
+  const totalCategories = uniqueCategories.length;
 
   return (
     <div className="App">
       <h1>Product Inventory</h1>
+      <p>Total Categories: {totalCategories} | Total Products: {totalProducts}</p>
       <CategoryButtons
         categories={uniqueCategories}
         onSelectCategory={setSelectedCategory}
+        selectedCategory={selectedCategory}
       />
 
       <ProductList products={filteredProducts} />
