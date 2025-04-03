@@ -1,30 +1,29 @@
-import logo from './logo.svg';
+import React, { useState }from 'react';
 import './App.css';
-import React from 'react';
 import data, { allCategories } from './data';
+import CategoryButtons from './CategoryButtons';
+import ProductList from './ProductList';
 
 function App() {
 
-  const categoryCounts = allCategories.reduce((acc, category) => {
-    acc[category] = (acc[category] || 0) + 1;
-    return acc;
-  }, {});
+  const uniqueCategories = [...new Set(allCategories)];
 
-  const categoryList = Object.entries(categoryCounts).map(([name, count]) => ({
-    name,
-    count
-  }));
+  const [selectedCategory, setSelectedCategory] = useState('All');
+
+  const filteredProducts = 
+    selectedCategory === 'All Categories'
+    ? data
+    : data.filter((product) => product.category === selectedCategory);
 
   return (
     <div className="App">
-      <h1>Product Categories</h1>
-      <ul>
-        {categoryList.map((category, index) => (
-          <li key={index}>
-            {category.name} ({category.count})
-            </li>
-        ))}
-      </ul>
+      <h1>Product Inventory</h1>
+      <CategoryButtons
+        categories={uniqueCategories}
+        onSelectCategory={setSelectedCategory}
+      />
+
+      <ProductList products={filteredProducts} />
     </div>
   );
 }
