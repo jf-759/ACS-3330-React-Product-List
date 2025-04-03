@@ -5,20 +5,23 @@ import data, { allCategories } from './data';
 
 function App() {
 
-  const uniqueCategories = [...new Set(allCategories)];
-
   const categoryCounts = allCategories.reduce((acc, category) => {
     acc[category] = (acc[category] || 0) + 1;
     return acc;
   }, {});
 
+  const categoryList = Object.entries(categoryCounts).map(([name, count]) => ({
+    name,
+    count
+  }));
+
   return (
     <div className="App">
       <h1>Product Categories</h1>
       <ul>
-        {uniqueCategories.map((category, index) => (
+        {categoryList.map((category, index) => (
           <li key={index}>
-            {category} ({categoryCounts[category]})
+            {category.name} ({category.count})
             </li>
         ))}
       </ul>
